@@ -29,10 +29,9 @@ export async function loader(args) {
  * @param {LoaderFunctionArgs}
  */
 async function loadCriticalData({context}) {
-  const [{collections}] = await Promise.all([
-    context.storefront.query(FEATURED_COLLECTION_QUERY),
-    // Add other queries here, so that they are loaded in parallel
-  ]);
+  const {collections} = await context.storefront.query(
+    FEATURED_COLLECTION_QUERY,
+  );
 
   return {
     featuredCollection: collections.nodes[0],
