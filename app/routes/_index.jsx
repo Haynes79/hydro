@@ -76,7 +76,17 @@ export default function Homepage() {
  * }}
  */
 function FeaturedCollection({collection}) {
-  if (!collection) return null;
+  if (!collection) {
+    return (
+      <div className="featured-collection-error">
+        <p>Error: Featured collection not found.</p>
+        <p>
+          Please create a collection in your Shopify admin and add it to your
+          navigation.
+        </p>
+      </div>
+    );
+  }
   const image = collection?.image;
   return (
     <Link
